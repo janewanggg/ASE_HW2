@@ -3,13 +3,13 @@ from flask import Flask, session, request, render_template, redirect
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'development key'
-app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://root:12345@localhost/HW2'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://test_user:asease@localhost/hw2'#'mysql://root:12345@localhost/HW2'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
 
 
 class User(db.Model):
-    __tablename__ = 'Users'
+    __tablename__ = 'User'
     uid = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(45), unique=True)
     password = db.Column(db.String(45))
@@ -20,7 +20,6 @@ class User(db.Model):
 
     def __repr__(self):
         return '<User %r>' % self.username
-
 
 @app.route('/')
 def index():
