@@ -51,7 +51,7 @@ class exampleTest(TestCase):
     
     def modify_password(self, username, password):
         password_query = User.query.filter_by(username=username).first()
-        if  password_query == None:
+        if  password_query is None:
             return password_query
         else:
             password_query.password = password
